@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart EFIS – Slideshow</title>
+  <style>
+.slideshow {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
+  margin-bottom: 1rem;
+  border-bottom: 4px solid #004b75;
+}
+
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 120px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.5));
+  z-index: 999;
+}
+</style>
+</head>
+<body>
+<img src="hangglider_logo.png" alt="Hang Glider Logo" class="logo"/>
+
+<div id="slideshow" class="slideshow"></div>
+<h1>Welcome to Smart EFIS</h1>
+
+
+
+
+<script>
+  const images = [
+    "https://images.unsplash.com/photo-1504198453319-5ce911bafcde",
+    "https://images.unsplash.com/photo-1533488765986-dfa2a9939acd",
+    "https://images.unsplash.com/photo-1508615093664-0d04a803c9f5",
+    "https://images.unsplash.com/photo-1526498460520-4c246339dccb"
+  ];
+  let currentIndex = 0;
+  const slideshow = document.getElementById("slideshow");
+  function changeBackground() {
+    slideshow.style.backgroundImage = `url('${images[currentIndex]}')`;
+    currentIndex = (currentIndex + 1) % images.length;
+  }
+  changeBackground();
+  setInterval(changeBackground, 5000);
+</script>
+
+</body>
+</html>

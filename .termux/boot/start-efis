@@ -1,0 +1,3 @@
+#!/data/data/com.termux/files/usr/bin/sh
+termux-wake-lock
+bash ~/smart-efis-global-i18n-auto-fix-ready/start-smart-efis.sh

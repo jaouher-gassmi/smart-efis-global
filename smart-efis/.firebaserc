@@ -1,0 +1,20 @@
+{
+  "projects": {
+    "firebase projects:list": "fir-demo-project",
+    " smart-efis-global": "smart-efis-global"
+  },
+  "targets": {
+    "smart-efis-global": {
+      "hosting": {
+        "ar": [
+          "public/ar",
+          "smart-efis-global"
+        ],
+        "en": [
+          "public/en"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

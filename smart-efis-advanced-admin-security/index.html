@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart EFIS – Slideshow</title>
+  <style>
+.slideshow {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
+  margin-bottom: 1rem;
+  border-bottom: 4px solid #004b75;
+}
+
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 120px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.5));
+  z-index: 999;
+}
+</style>
+</head>
+<body>
+<img src="hangglider_silhouette.png" alt="Hang Glider Logo" class="logo"/>
+
+<div id="slideshow" class="slideshow"></div>
+<h1>Welcome to Smart EFIS</h1>
+
+
+
+
+<script>
+  const images = [
+    "https://images.unsplash.com/photo-1504198453319-5ce911bafcde",
+    "https://images.unsplash.com/photo-1533488765986-dfa2a9939acd",
+    "https://images.unsplash.com/photo-1508615093664-0d04a803c9f5",
+    "https://images.unsplash.com/photo-1526498460520-4c246339dccb"
+  ];
+  let currentIndex = 0;
+  const slideshow = document.getElementById("slideshow");
+  function changeBackground() {
+    slideshow.style.backgroundImage = `url('${images[currentIndex]}')`;
+    currentIndex = (currentIndex + 1) % images.length;
+  }
+  changeBackground();
+  setInterval(changeBackground, 5000);
+</script>
+
+
+<script>
+  // Admin control to show/hide logo dynamically
+  const logo = document.querySelector('.logo');
+  const adminToggle = document.createElement('button');
+  adminToggle.textContent = "🛠 Toggle Logo";
+  adminToggle.style.position = "fixed";
+  adminToggle.style.bottom = "20px";
+  adminToggle.style.right = "20px";
+  adminToggle.style.zIndex = "9999";
+  adminToggle.style.padding = "0.5rem 1rem";
+  adminToggle.style.backgroundColor = "#004b75";
+  adminToggle.style.color = "white";
+  adminToggle.style.border = "none";
+  adminToggle.style.borderRadius = "6px";
+  adminToggle.style.cursor = "pointer";
+
+  adminToggle.onclick = () => {
+    logo.style.display = logo.style.display === "none" ? "block" : "none";
+  };
+  document.body.appendChild(adminToggle);
+</script>
+
+
+<script>
+  const logo = document.querySelector('.logo');
+
+  // زر إظهار/إخفاء الشعار
+  const adminToggle = document.createElement('button');
+  adminToggle.textContent = "🛠 Toggle Logo";
+  adminToggle.style.position = "fixed";
+  adminToggle.style.bottom = "20px";
+  adminToggle.style.right = "20px";
+  adminToggle.style.zIndex = "9999";
+  adminToggle.style.padding = "0.5rem 1rem";
+  adminToggle.style.backgroundColor = "#004b75";
+  adminToggle.style.color = "white";
+  adminToggle.style.border = "none";
+  adminToggle.style.borderRadius = "6px";
+  adminToggle.style.cursor = "pointer";
+  adminToggle.onclick = () => {
+    logo.style.display = logo.style.display === "none" ? "block" : "none";
+  };
+  document.body.appendChild(adminToggle);
+
+  // زر تغيير الشعار
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = 'image/*';
+  fileInput.style.position = 'fixed';
+  fileInput.style.bottom = '60px';
+  fileInput.style.right = '20px';
+  fileInput.style.zIndex = '9999';
+  fileInput.style.opacity = '0';
+  fileInput.style.cursor = 'pointer';
+
+  const changeBtn = document.createElement('button');
+  changeBtn.textContent = "🖼️ Change Logo";
+  changeBtn.style.position = "fixed";
+  changeBtn.style.bottom = "60px";
+  changeBtn.style.right = "20px";
+  changeBtn.style.zIndex = "9999";
+  changeBtn.style.padding = "0.5rem 1rem";
+  changeBtn.style.backgroundColor = "#444";
+  changeBtn.style.color = "white";
+  changeBtn.style.border = "none";
+  changeBtn.style.borderRadius = "6px";
+  changeBtn.style.cursor = "pointer";
+
+  changeBtn.onclick = () => fileInput.click();
+  fileInput.onchange = () => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      logo.src = e.target.result;
+    };
+    reader.readAsDataURL(fileInput.files[0]);
+  };
+
+  document.body.appendChild(changeBtn);
+  document.body.appendChild(fileInput);
+</script>
+
+
+<!-- Admin Access Modal -->
+<div id="adminModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('adminModal').style.display='none'">&times;</span>
+    <h3>Admin Login</h3>
+    <input type="password" id="adminPass" placeholder="Enter admin password" />
+    <div class="danger" id="adminWarning"></div>
+    <button onclick="validateAdmin()">Login</button>
+  </div>
+</div>
+
+<script>
+  const adminBtn = document.createElement('button');
+  adminBtn.textContent = "🔒 Admin Panel";
+  adminBtn.style.position = "fixed";
+  adminBtn.style.bottom = "100px";
+  adminBtn.style.right = "20px";
+  adminBtn.style.zIndex = "9999";
+  adminBtn.style.padding = "0.5rem 1rem";
+  adminBtn.style.backgroundColor = "#222";
+  adminBtn.style.color = "white";
+  adminBtn.style.border = "none";
+  adminBtn.style.borderRadius = "6px";
+  adminBtn.style.cursor = "pointer";
+  document.body.appendChild(adminBtn);
+  adminBtn.onclick = () => document.getElementById('adminModal').style.display = "block";
+
+  function validateAdmin() {
+    const pass = document.getElementById("adminPass").value;
+    const warning = document.getElementById("adminWarning");
+    if (pass === "efis2025admin") {
+      document.querySelectorAll("button").forEach(btn => btn.style.display = "block");
+      document.getElementById("adminModal").style.display = "none";
+    } else {
+      warning.innerText = "Incorrect password!";
+    }
+  }
+
+  // Hide all control buttons initially (except adminBtn)
+  window.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("button").forEach(btn => {
+      if (btn.textContent.includes("Logo") || btn.textContent.includes("Change")) {
+        btn.style.display = "none";
+      }
+    });
+  });
+</script>
+
+
+<script>
+  const adminActivity = {
+    freezeMode: false,
+    activeUsers: [],
+    suspiciousDetected: false,
+    notifyAdmin: () => {
+      // ⚠️ Placeholder: integrate with Cloud Functions or backend endpoint
+      console.warn("🚨 Potential security threat! Notifying admin via email & SMS...");
+    },
+    freezeSite: () => {
+      adminActivity.freezeMode = true;
+      document.querySelectorAll("button, input, select").forEach(el => {
+        el.disabled = true;
+        el.style.opacity = "0.5";
+      });
+      const msg = document.createElement("div");
+      msg.innerHTML = "<h2 style='color:red;'>🚨 Site Frozen due to suspicious activity</h2><p>Admins have been alerted.</p>";
+      msg.style.position = "fixed";
+      msg.style.top = "30%";
+      msg.style.left = "50%";
+      msg.style.transform = "translateX(-50%)";
+      msg.style.zIndex = "99999";
+      msg.style.background = "#fff";
+      msg.style.padding = "2rem";
+      msg.style.border = "3px solid red";
+      document.body.appendChild(msg);
+    },
+    verifyActivity: () => {
+      // ⚠️ This simulates detection logic. Replace with real-time monitoring
+      setTimeout(() => {
+        const randomSuspicion = Math.random() < 0.05;
+        if (randomSuspicion) {
+          adminActivity.suspiciousDetected = true;
+          adminActivity.notifyAdmin();
+          adminActivity.freezeSite();
+        }
+      }, 7000);
+    }
+  };
+
+  // Anti-bot check basic
+  window.addEventListener("load", () => {
+    const startTime = Date.now();
+    document.body.addEventListener("mousemove", () => {
+      const t = Date.now() - startTime;
+      if (t < 1000) {
+        console.warn("🤖 Bot-like activity detected");
+        adminActivity.verifyActivity();
+      }
+    });
+  });
+
+  // Verify after user selects route
+  setTimeout(() => {
+    if (!adminActivity.freezeMode) adminActivity.verifyActivity();
+  }, 12000);
+</script>
+
+</body>
+</html>

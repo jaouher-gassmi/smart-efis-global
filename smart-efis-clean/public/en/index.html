@@ -1,0 +1,54 @@
+
+<script id="config-data" type="application/json">
+{
+  "title": "Smart EFIS",
+  "language": "en",
+  "version": "5.1.1",
+  "features": ["map", "auth", "voice"]
+}
+</script>
+<script>
+  const configElement = document.getElementById("config-data");
+  const config = JSON.parse(configElement.textContent);
+
+  console.log("Title:", config.title);
+  console.log("Language:", config.language);
+  console.log("Version:", config.version);
+  console.log("Features:", config.features);
+</script>
+<script>
+  // جلب العنصر الذي يحتوي JSON
+  const configElement = document.getElementById("config-data");
+  const config = JSON.parse(configElement.textContent);
+
+  // استخدام البيانات
+  document.title = config.title;
+  console.log("Language:", config.language);
+  console.log("Version:", config.version);
+  console.log("Features:", config.features);
+
+  // مثال: تفعيل ميزة الصوت أو تحديد اللغة الافتراضية
+  if (config.language === "ar") {
+    document.body.dir = "rtl";
+    document.body.style.fontFamily = "Tahoma, sans-serif";
+  }
+
+  // مثال: إظهار إشعار إن كانت ميزة الصوت مفعّلة
+  if (config.features.includes("voice")) {
+    console.log("🎤 Voice assistant is enabled");
+  }
+</script>
+const translations = {
+  en: {
+    start: "Start",
+    welcome: "Welcome to Smart EFIS"
+  },
+  ar: {
+    start: "ابدأ",
+    welcome: "مرحبًا بك في نظام سمارت إي إف آي إس"
+  }
+};
+
+const lang = config.language;
+document.getElementById("startButton").textContent = translations[lang].start;
+document.getElementById("welcomeText").textContent = translations[lang].welcome; 

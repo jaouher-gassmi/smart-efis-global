@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart EFIS</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #eef5f9; margin: 0; padding: 0; text-align: center; }
+    header { background: #004b75; color: white; padding: 1rem; }
+    .language-switch { position: absolute; top: 1rem; right: 1rem; }
+    .language-switch button {
+      background: #ffffff44; color: #fff; border: none; padding: 0.5rem 1rem;
+      border-radius: 4px; cursor: pointer; font-weight: bold;
+    }
+    .main { padding: 2rem; }
+    button { padding: 10px 20px; border: none; background: #0077b6; color: white; border-radius: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">Smart EFIS</h1>
+    <p id="subtitle">Smart Electronic Flight Information System for Hang Gliding</p>
+    <div class="language-switch">
+      <button onclick="toggleLanguage()">🌍 AR / EN</button>
+    </div>
+  </header>
+  <section class="main">
+    <button id="startButton">START</button>
+    <div style="margin-top: 2rem;">
+      <button onclick="alert('Register Clicked')" id="registerBtn">Register</button>
+      <button onclick="alert('Login Clicked')" id="loginBtn">Login</button>
+    </div>
+    <div style="margin-top: 1rem;">
+      <label><input type="checkbox" id="terms" /> <span id="termsText">I agree to terms and I'm not a robot</span></label>
+    </div>
+  </section>
+
+  <script>
+    let currentLang = "en";
+
+    const translations = {
+      en: {
+        title: "Smart EFIS",
+        subtitle: "Smart Electronic Flight Information System for Hang Gliding",
+        start: "START",
+        register: "Register",
+        login: "Login",
+        terms: "I agree to terms and I'm not a robot"
+      },
+      ar: {
+        title: "نظام الطيران الذكي",
+        subtitle: "نظام المعلومات الذكي للطيران الشراعي",
+        start: "ابدأ الرحلة",
+        register: "تسجيل",
+        login: "دخول",
+        terms: "أوافق على الشروط ولست روبوتًا"
+      }
+    };
+
+    function toggleLanguage() {
+      currentLang = currentLang === "en" ? "ar" : "en";
+      document.getElementById("title").innerText = translations[currentLang].title;
+      document.getElementById("subtitle").innerText = translations[currentLang].subtitle;
+      document.getElementById("startButton").innerText = translations[currentLang].start;
+      document.getElementById("registerBtn").innerText = translations[currentLang].register;
+      document.getElementById("loginBtn").innerText = translations[currentLang].login;
+      document.getElementById("termsText").innerText = translations[currentLang].terms;
+    }
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAubwstU2qGdJZLCMCmaZVGxfzLbmqMFmM",
+      authDomain: "smat-efis-ai.firebaseapp.com",
+      projectId: "smat-efis-ai",
+      storageBucket: "smat-efis-ai.firebasestorage.app",
+      messagingSenderId: "298649583256",
+      appId: "1:298649583256:web:0e772a74353dacb8355aed",
+      measurementId: "G-8HRHV879D6"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    async function registerUser() {
+      const email = prompt("Enter email:");
+      const password = prompt("Enter password:");
+      const name = prompt("Full name:");
+      const phone = prompt("Phone number:");
+
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        await setDoc(doc(db, "users", cred.user.uid), {
+          name, email, phone, created: new Date().toISOString()
+        });
+        alert("✅ Account created successfully!");
+      } catch (err) {
+        alert("❌ " + err.message);
+      }
+    }
+
+    async function loginUser() {
+      const email = prompt("Enter email:");
+      const password = prompt("Enter password:");
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("✅ Login successful!");
+      } catch (err) {
+        alert("❌ " + err.message);
+      }
+    }
+
+    document.getElementById("registerBtn").onclick = registerUser;
+    document.getElementById("loginBtn").onclick = loginUser;
+  </script>
+</body>
+</html>
+
+</html>

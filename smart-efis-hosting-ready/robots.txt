@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://smart-efis-global.web.app/sitemap.xml

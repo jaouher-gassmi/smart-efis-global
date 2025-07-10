@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart EFIS – Smart Electronic Flight Information System</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: linear-gradient(#d9f2ff, #ffffff); color: #333; }
+    header { background-color: #004b75; color: white; padding: 1rem; text-align: center; position: relative; }
+    .language-selector, .unit-selector { position: absolute; top: 1rem; }
+    .language-selector { right: 1rem; }
+    .unit-selector { left: 1rem; }
+    .main { text-align: center; padding: 2rem; }
+    #mapContainer { height: 600px; width: 100%; margin: 1rem 0; display: none; }
+    .map-controls { position: absolute; bottom: 1rem; right: 1rem; z-index: 1000; }
+    #startButton { background: #28a745; color: white; padding: 0.8rem 1.2rem; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; display: none; }
+    #infoPanel { margin-top: 1rem; font-size: 1rem; color: #004b75; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+    .modal-content { background: white; padding: 20px; border-radius: 8px; width: 90%; max-width: 400px; text-align: left; }
+    input, select { width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 4px; border: 1px solid #ccc; }
+    button { background: #0077b6; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
+    .danger { color: red; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">Smart EFIS</h1>
+    <p id="subtitle">Smart Electronic Flight Information System for Hang Gliding</p>
+    <div class="language-selector">
+      <button onclick="toggleLang()" style="background:none;border:none;font-size:20px;cursor:pointer;">🌍</button>
+      <div id="langMenu" style="display:none;">
+        <button onclick="setLang('en')">English</button> / <button onclick="setLang('ar')">عربي</button>
+      </div>
+    </div>
+  </header>
+  <section class="main">
+    <input type="datetime-local" id="flightTime" />
+    <button id="startButton" onclick="startFlight()">START</button>
+    <div id="mapContainer"></div>
+    <div id="infoPanel"></div>
+  </section>
+
+  <div id="authModal" class="modal">
+    <div class="modal-content">
+      <h3>Register</h3>
+      <form id="registerForm">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="tel" id="phone" placeholder="Phone Number" required />
+        <input type="date" id="birthdate" required />
+        <select id="gender">
+          <option value="">Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <input type="password" id="password" placeholder="Strong Password" required />
+        <label><input type="checkbox" id="terms" /> I agree to terms and I'm not a robot</label>
+        <div class="danger" id="warning"></div>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAubwstU2qGdJZLCMCmaZVGxfzLbmqMFmM",
+      authDomain: "smat-efis-ai.firebaseapp.com",
+      projectId: "smat-efis-ai",
+      storageBucket: "smat-efis-ai.firebasestorage.app",
+      messagingSenderId: "298649583256",
+      appId: "1:298649583256:web:0e772a74353dacb8355aed",
+      measurementId: "G-8HRHV879D6"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
+</body>
+</html>

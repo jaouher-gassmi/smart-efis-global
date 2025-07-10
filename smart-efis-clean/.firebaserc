@@ -1,0 +1,19 @@
+{
+  "projects": {
+    "efis": "smart-efis-global",
+    "default": "smart-efis-global"
+  },
+  "targets": {
+    "smart-efis-global": {
+      "hosting": {
+        "en": [
+          "public/en"
+        ],
+        "ar": [
+          "public/ar"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

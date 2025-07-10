@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>404 – Not Found</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 2rem;
+      background: #f7f7f7;
+      color: #333;
+    }
+    .lang-switch {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    button {
+      background: #0077b6;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    h1 { font-size: 3rem; margin-top: 2rem; }
+    p { font-size: 1.2rem; }
+  </style>
+</head>
+<body>
+  <div class="lang-switch">
+    <button onclick="toggle404Lang()">🌐 AR / EN</button>
+  </div>
+  <h1 id="title">404 – Page Not Found</h1>
+  <p id="desc">Sorry, the page you're looking for does not exist.</p>
+  <script>
+    let lang = "en";
+    const t404 = {
+      en: {
+        title: "404 – Page Not Found",
+        desc: "Sorry, the page you're looking for does not exist."
+      },
+      ar: {
+        title: "٤٠٤ – الصفحة غير موجودة",
+        desc: "عذرًا، الصفحة التي تبحث عنها غير متوفرة."
+      }
+    };
+    function toggle404Lang() {
+      lang = lang === "en" ? "ar" : "en";
+      document.getElementById("title").textContent = t404[lang].title;
+      document.getElementById("desc").textContent = t404[lang].desc;
+      document.body.style.direction = lang === "ar" ? "rtl" : "ltr";
+    }
+  </script>
+</body>
+</html>

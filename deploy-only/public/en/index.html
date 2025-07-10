@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head><meta charset="UTF-8"><title>Smart EFIS</title></head>
+<body>
+
+<div style="text-align:right; margin: 1rem;">
+  <label for="languageSelect" style="font-weight:bold;">🌐 Select Language:</label>
+  <select id="languageSelect" onchange="changeLanguage()" style="padding: 0.4rem; font-size: 1rem;">
+    <option value="en">English</option>
+    <option value="ar">العربية</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+    <option value="de">Deutsch</option>
+    <option value="zh">中文</option>
+    <option value="ja">日本語</option>
+    <option value="ru">Русский</option>
+    <option value="pt">Português</option>
+    <option value="hi">हिन्दी</option>
+    <option value="it">Italiano</option>
+    <option value="ko">한국어</option>
+    <option value="tr">Türkçe</option>
+    <option value="nl">Nederlands</option>
+    <option value="pl">Polski</option>
+    <option value="sv">Svenska</option>
+    <option value="id">Bahasa Indonesia</option>
+    <option value="th">ไทย</option>
+    <option value="vi">Tiếng Việt</option>
+    <option value="fa">فارسی</option>
+  </select>
+</div>
+
+<script>
+function changeLanguage() {
+  const lang = document.getElementById("languageSelect").value;
+  alert("Selected language: " + lang + " (Interface not yet localized).");
+  // هنا يمكن إضافة تحميل ملفات ترجمة ديناميكيًا إذا كانت موجودة
+}
+</script>
+<h1>Welcome to Smart EFIS (EN)</h1></body></html>
