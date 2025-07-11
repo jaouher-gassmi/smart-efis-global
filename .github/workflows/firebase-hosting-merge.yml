@@ -8,17 +8,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      # تأكد من استخدام إصدار حديث من Node.js و npm
-      - uses: actions/setup-node@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '20' # أو أي إصدار تدعمه
-          cache: 'npm'
-
-      # تثبيت الاعتماديات باستخدام npm ci
-      - run: npm ci
-      - run: npm run build
-
+          node-version: '20'
+          
+      - name: Cache node modules
+        uses: actions/cache@v3
+        id: npm-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+            
+      - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci --loglevel verbose
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+          
+      - name: Build project
+        run: npm run build --verbose
+        
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
