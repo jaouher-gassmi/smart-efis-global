@@ -1,0 +1,39 @@
+{
+	"motd": {
+		"cloudBuildErrorAfter": 1594252800000,
+		"cloudBuildWarnAfter": 1590019200000,
+		"defaultNode10After": 1594252800000,
+		"minVersion": "3.0.5",
+		"node8DeploysDisabledAfter": 1613390400000,
+		"node8RuntimeDisabledAfter": 1615809600000,
+		"node8WarnAfter": 1600128000000,
+		"fetched": 1752190362242
+	},
+	"gemini": true,
+	"usage": true,
+	"analytics-uuid": "2738a49c-33b6-4c8e-9b8e-9261d9a013b6",
+	"user": {
+		"iss": "accounts.google.com",
+		"azp": "563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com",
+		"aud": "563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com",
+		"sub": "100808966073186089086",
+		"email": "jaouher.gassmi.97@gmail.com",
+		"email_verified": true,
+		"at_hash": "XczyCC88WD56Ab1zhTyfTg",
+		"iat": 1752190405,
+		"exp": 1752194005
+	},
+	"tokens": {
+		"expires_at": 1752210079179,
+		"refresh_token": "1//03OvG5TawkQfDCgYIARAAGAMSNwF-L9Irm8fVKVvbNCBpJWgNtrFFEv4itS1QAog4ojfUPjx91S4Q-oFmqes02yuNV6yPIXYBIEA",
+		"scopes": [],
+		"access_token": "ya29.a0AS3H6Nw6R35oMuCejkoZXOCSXmHUfyIpdn758_KB1CgtPIpKUwSO0PZwNAkfNWt4Sbron-dC5xXcpf2zEo_uWyxaqNX4ycTEDLwUEFD19n4aaE2tTS_wP-T9su1K6kaJ_9w6xJX4DW4nFu7koRmXMw38zPGIeGanF_nt33s3UMoyOikaCgYKAUMSARcSFQHGX2Mi41DCfXons2NBCP5DTWFhUQ0182",
+		"expires_in": 3599,
+		"scope": "https://www.googleapis.com/auth/firebase openid https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/userinfo.email",
+		"token_type": "Bearer",
+		"id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjhlOGZjOGU1NTZmN2E3NmQwOGQzNTgyOWQ2ZjkwYWUyZTEyY2ZkMGQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNTYzNTg0MzM1ODY5LWZncmhnbWQ0N2JxbmVraWo1aThiNXByMDNobzg0OWU2LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNTYzNTg0MzM1ODY5LWZncmhnbWQ0N2JxbmVraWo1aThiNXByMDNobzg0OWU2LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAwODA4OTY2MDczMTg2MDg5MDg2IiwiZW1haWwiOiJqYW91aGVyLmdhc3NtaS45N0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IjdtTU9JSWpBZEw4dWt3TURveko1TUEiLCJpYXQiOjE3NTIyMDY0ODAsImV4cCI6MTc1MjIxMDA4MH0.Kb_ZEQBkU6ZQZuaVJHlO0Y8ta_5MaD-xArLgqopCOu8UDpfsERZRKKrWMJ7KDSVK-_dhV-D3U4CRx-NPnWtjlLqPfLRZt_1lsKKlXp5dslY6YGB4JmP9vLZeueMZlko53ROcJCaPXh6t1EobWc_LZNtA-m-ork-DG9uMwL-XLgrpjbNQ_D3nALDK2qDt6xp-b0ziM5QpZ_WcA2pIQ6aHuYrZp6gjNo7PMOh99OKZvZ7T0Ek2CgIg1Cxdh1Z74-6GWXfRgIXDXUS5SvCjvQ_0WO_bt94S5hb2qv5-lAMVS8h7CGv4KX-CD37vPciy9aQZDo6ff4eSwjZ_Ts_ZiO9b0A"
+	},
+	"activeProjects": {
+		"/data/data/com.termux/files/home": "smart-efis-global"
+	}
+}
