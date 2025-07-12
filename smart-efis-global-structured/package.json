@@ -1,0 +1,20 @@
+{
+  "name": "smart-efis-global",
+  "version": "5.1.1",
+  "description": "Quantum-enhanced EFIS system with AI, Firebase, and Netlify support",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "sh scripts/deploy-fix.sh",
+    "clean": "sh scripts/clean-update.sh"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "firebase": "^11.0.0"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0"
+  }
+}

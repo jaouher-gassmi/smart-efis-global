@@ -1,0 +1,8 @@
+{
+  "theme": "dark",
+  "voiceAssistant": true,
+  "defaultLanguage": "en",
+  "fallbackLanguage": "ar",
+  "enableAnalytics": true,
+  "emergencyLock": false
+}

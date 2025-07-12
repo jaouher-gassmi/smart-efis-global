@@ -1,0 +1,101 @@
+{
+  "collections": [
+    {
+      "name": "users",
+      "fields": [
+        "id",
+        "email",
+        "role",
+        "active",
+        "lang",
+        "lastSeen"
+      ]
+    },
+    {
+      "name": "flights",
+      "fields": [
+        "id",
+        "aircraftId",
+        "pilotId",
+        "origin",
+        "dest",
+        "route"
+      ]
+    },
+    {
+      "name": "aircraft",
+      "fields": [
+        "id",
+        "type",
+        "model",
+        "status",
+        "assignedTo"
+      ]
+    },
+    {
+      "name": "logs",
+      "fields": [
+        "id",
+        "userId",
+        "action",
+        "timestamp",
+        "status"
+      ]
+    },
+    {
+      "name": "alerts",
+      "fields": [
+        "id",
+        "level",
+        "category",
+        "text",
+        "resolved"
+      ]
+    },
+    {
+      "name": "settings",
+      "fields": [
+        "key",
+        "value",
+        "type"
+      ]
+    },
+    {
+      "name": "system",
+      "fields": [
+        "threatLevel",
+        "activeFlights",
+        "fallbackMode"
+      ]
+    }
+  ],
+  "indexes": [
+    {
+      "collection": "alerts",
+      "fields": [
+        "level",
+        "resolved"
+      ]
+    },
+    {
+      "collection": "logs",
+      "fields": [
+        "userId",
+        "status"
+      ]
+    },
+    {
+      "collection": "flights",
+      "fields": [
+        "pilotId",
+        "origin"
+      ]
+    },
+    {
+      "collection": "system",
+      "fields": [
+        "threatLevel"
+      ]
+    }
+  ]
+}

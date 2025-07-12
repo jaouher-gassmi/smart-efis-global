@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "admin1",
+      "role": "admin",
+      "email": "admin@smart-efis.global",
+      "active": true
+    },
+    {
+      "id": "pilot1",
+      "role": "pilot",
+      "email": "pilot@smart-efis.global",
+      "active": true
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg1",
+      "type": "alert",
+      "text": "\u062a\u0645 \u0627\u0644\u0643\u0634\u0641 \u0639\u0646 \u062a\u0647\u062f\u064a\u062f \u0633\u064a\u0628\u0631\u0627\u0646\u064a!",
+      "priority": "high"
+    }
+  ]
+}

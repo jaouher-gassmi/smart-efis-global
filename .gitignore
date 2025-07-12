@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# System files
+.DS_Store
+*.log
+
+# Env files
+.env
+.env.*.local
+
+# Firebase
+.firebase/
+firebase-debug.log*
+
+# Netlify
+.netlify/
+
+# IDE settings
+.vscode/
+.idea/
